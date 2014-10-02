@@ -40,8 +40,8 @@ define balancer::vhost (
     servername => $servername,
     docroot    => $docroot,
     proxy_pass => [
-      { 'proxy' => '/', 'url' => "balancer://${name}/"},
-      { 'proxy' => '/*', 'url' => "balancer://${name}/"},
+      { 'path' => '/', 'url' => "balancer://${name}/"},
+      { 'path' => '/*', 'url' => "balancer://${name}/"},
     ],
   }
 

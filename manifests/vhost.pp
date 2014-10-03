@@ -46,6 +46,7 @@ define balancer::vhost (
   }
 
   ::apache::balancer { $name:
-    collect_exported => true
+    collect_exported => true,
+     proxy_set => {'stickysession' => 'JSESSIONID'},
   }
 }

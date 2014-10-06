@@ -40,13 +40,13 @@ define balancer::vhost (
     servername => $servername,
     docroot    => $docroot,
     proxy_pass => [
-      { 'path' => '/', 'url' => "balancer://${name}/", 'nofailover' => 'On'},
-      { 'path' => '/*', 'url' => "balancer://${name}/", 'nofailover' => 'On'},
+      { 'path' => '/', 'url' => "balancer://${name}/"},
+      { 'path' => '/*', 'url' => "balancer://${name}/"},
     ],
   }
 
   ::apache::balancer { $name:
     collect_exported => true,
-    proxy_set => {'stickysession' => 'JSESSIONID'},
+    proxy_set => {'stickysession' => 'JSESSIONID', 'nofailover' => 'On'},
   }
 }
